@@ -1,13 +1,19 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
+import {addProductToStorage} from '../../context/Context'
 export default function DetailProduct({ route, navigation }) {
   const { product } = route.params;
   const handleGoBack = () => {
     navigation.goBack();
   };
 
+
+  const handleAddProduct = () => {
+    console.log('Adding product:', product.id);
+    addProductToStorage(product);
+    
+  };
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
@@ -29,7 +35,7 @@ export default function DetailProduct({ route, navigation }) {
             ))}
           </ScrollView>
         </View>
-        <TouchableOpacity style={styles.buttonShop}>
+        <TouchableOpacity style={styles.buttonShop} onPress={handleAddProduct}>
           <Ionicons name="ios-cart" size={24} color="white" />
           <Text style={styles.textprice}>Comprar Producto</Text>
         </TouchableOpacity>

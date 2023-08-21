@@ -3,10 +3,16 @@ import React from 'react'
 import Constants from 'expo-constants'
 import { AntDesign } from '@expo/vector-icons'; // Import AntDesign icon library
 import Productos from './Productos';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 export default function Home() {
+  const navigation = useNavigation();
+
+  const handleShop=()=>{
+    navigation.navigate('shopProduct')
+  }
     return (
       <View style={styles.container}>
         <View style={styles.containerImage}>
@@ -19,7 +25,7 @@ export default function Home() {
           </View>
           <TouchableOpacity
           style={styles.cartIconContainer}
-          
+          onPress={handleShop}
         >
           <View style={styles.cartIcon}>
             <AntDesign name="shoppingcart" size={30} color="white" />

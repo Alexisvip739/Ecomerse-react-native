@@ -38,6 +38,7 @@ export default function Productos() {
 
   const handlePress = (item) => {
     const product = {
+      id:item.id,
       name: item.title,
       price: item.price,
       images: item.images,
@@ -46,6 +47,7 @@ export default function Productos() {
     };
     navigation.navigate('DetailProduct', { product });
   };
+  
 
   const handleCategoryPress = (category) => {
     setSelectedCategory(category === selectedCategory ? null : category);
@@ -69,7 +71,7 @@ export default function Productos() {
 
   return (
     <View style={styles.container}>
-      <ScrollView horizontal showsHorizontalScrollIndicator={falseg} style={styles.categoriesContainer}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoriesContainer}>
         <TouchableOpacity
           style={[
             styles.categoryButton,
